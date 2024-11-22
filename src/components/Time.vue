@@ -1,5 +1,6 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue';
+const prop = defineProps(['color']);
 const time = ref("");
 function getTime(){
   const date = new Date();
@@ -17,7 +18,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="time">
+  <div id="time" :style="{color: prop.color}">
     <div id="container">
       <div id="timeDisplay">{{ time }}</div>
       <!-- <weather id="weather"></weather> -->
@@ -32,6 +33,7 @@ onMounted(() => {
   align-items: center;
   width: 20vw;
   background-color: transparent;
+  color: #CDFBE4;
 }
 
 #timeDisplay{

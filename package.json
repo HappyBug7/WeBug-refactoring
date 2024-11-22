@@ -11,7 +11,9 @@
     "type-check": "vue-tsc --build --force"
   },
   "dependencies": {
+    "boxicons": "^2.1.4",
     "vue": "^3.5.12",
+    "vue-draggable-resizable": "^3.0.0",
     "vue-router": "^4.4.5"
   },
   "devDependencies": {
