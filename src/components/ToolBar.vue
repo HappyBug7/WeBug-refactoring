@@ -1,23 +1,27 @@
 <script setup>
 import ToolBarItems from './ToolBarItems.vue';
-const prop = defineProps(['item_num', 'size', 'icons', 'use_switchs', 'slot_widths']);
+const prop = defineProps(['size', 'components']);
 </script>
 
 <template>
   <div class="tool-bar-container">
-    <tool-bar-items v-for="index in Array.from({length: prop.item_num}, (_, i) => i)" 
+    <tool-bar-items v-for="index in Array.from({length: prop.components.length}, (_, i) => i)"
       :key="index" 
       :size="prop.size" 
       :posx="20" 
       :posy="20+index*(size+20)" 
-      :icon="prop.icons[index]" 
-      :use_switch="prop.use_switchs[index]" 
-      :slot_width="prop.slot_widths[index]">
+      :icon="prop.components[index].icon" 
+      :use_switch="prop.components[index].use_switch" 
+      :width="prop.components[index].slot_width">
       <template v-slot:slot-1>
-        <slot :class="`slot-{{index}}-1`"></slot>
+        <slot :class="`slot-{{index}}-1`">
+          <component :is="prop.components[index].component_state_1" v-bind="prop.components[index].component_props_1"></component>
+        </slot>
       </template>
       <template v-slot:slot-2>
-        <slot :class="`slot-{{index}}-2`"></slot>
+        <slot :class="`slot-{{index}}-2`">
+          <component :is="prop.components[index].component_state_2" v-bind="prop.components[index].component_props_2"></component>
+        </slot>
       </template>
     </tool-bar-items>
   </div>
