@@ -7,7 +7,8 @@ const prop = defineProps(['bg_image']);
 <template>
   <div class="webug-container" :style="{backgroundImage: `url(${bg_image})`}">
     <Time :color='`#CDFBE4`'></Time>
-    <tool-bar-items :size="100" :icon='`bx bx-x`' :posx='100' :posy='100' :icon_color='`#cdfbe4`'></tool-bar-items>
+    <tool-bar-items :size="100" :icon='`bx bx-x`' :posx='100' :posy='100' :icon_color='`#cdfbe4`' :use_switch='true'>
+    </tool-bar-items>
   </div>
 </template>
 
@@ -19,6 +20,6 @@ const prop = defineProps(['bg_image']);
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  background-size: cover;
+  background-size: 100vw 100vh;
 }
 </style>
