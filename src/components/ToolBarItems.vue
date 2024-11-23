@@ -2,14 +2,14 @@
 import VueDraggableResizable from 'vue-draggable-resizable';
 import {ref} from 'vue';
 import 'boxicons';
-const prop = defineProps(['icon', 'icon_color', 'size', 'posx', 'posy', 'control_color', 'use_switch', 'slot_width']);
+const prop = defineProps(['icon', 'icon_color', 'size', 'posx', 'posy', 'use_switch', 'slot_width']);
 const isOpen = ref(false);
 const filterDisplay = ref('none');
 const view = ref(true);
 </script>
 
 <template>
-  <div class="tool-bar-item-container" :style="{width: size+'px', height: size+'px', top: posx='px', left: posy+'px', color: icon_color}">
+  <div class="tool-bar-item-container" :style="{width: size+'px', height: size+'px', top: posy+'px', left: posx+'px', color: icon_color}">
     <i :class=prop.icon id="icon"  @click="() => {isOpen = !isOpen}" @mouseover="() => {if (isOpen) filterDisplay = 'block'}" :style="{width: size+'px', height: size+'px', fontSize: size+'px', color: icon_color}"></i>
     <div id="filter" :style="{display: filterDisplay, width: size+'px', height: size+'px'}" @mouseleave="() => {filterDisplay = 'none'}" @click="() => {isOpen = !isOpen}">
       <i class='bx bx-x' id="X" :style="{fontSize: size+'px'}"></i>
