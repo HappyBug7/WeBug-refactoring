@@ -8,7 +8,7 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: WebugView,
-      props: {bg_image: '/bg_bench.jpg'}
+      props: {bg_image: '/bg_benchjpg'}
     },
   ],
 })

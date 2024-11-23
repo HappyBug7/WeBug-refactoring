@@ -16,8 +16,8 @@ const view = ref(true);
     </div>
   </div>
   <div class="draggable-container" v-show="isOpen">
-    <vue-draggable-resizable :parent="false" :w="prop.width">
-      <div class="slot-container" :style="{width: prop.width}">
+    <vue-draggable-resizable :parent="false" :w="prop.width+'px'">
+      <div class="slot-container" :style="{width: prop.width+'px'}">
         <div class="control-buttons">
           <div class="close-button">
             <i class='bx bx-x' @click="() => {isOpen = !isOpen}"></i>

@@ -1,6 +1,5 @@
 <script setup>
 import Time from '@/components/Time.vue';
-import ToolBarItems from '@/components/ToolBarItems.vue';
 import ToolBar from '@/components/ToolBar.vue';
 const prop = defineProps(['bg_image']);
 const size = 50;
@@ -9,7 +8,7 @@ const elements = [
     icon: 'bx bx-x',
     icon_color: '#CDFBE4',
     use_switch: true,
-    slot_width: '200px',
+    slot_width: 200,
     component_state_1: Time,
     component_state_2: Time,
     component_props_1: {color: '#CDFBE4'},
@@ -19,7 +18,7 @@ const elements = [
     icon: 'bx bx-x',
     icon_color: '#CDFBE4',
     use_switch: true,
-    slot_width: '200px',
+    slot_width: 200,
     component_state_1: Time,
     component_state_2: Time,
     component_props_1: {color: '#CDFBE4'},
