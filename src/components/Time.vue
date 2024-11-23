@@ -46,11 +46,6 @@ onMounted(() => {
   transform: scale(1.2);
 }
 
-#dateDisplay{
-  user-select: none;
-  font-size: 30px;
-}
-
 #container{
   display: flex;
   flex-direction: column;
