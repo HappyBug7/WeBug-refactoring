@@ -65,7 +65,7 @@ const view = ref(true);
   border-radius: 50%;
   box-shadow: 2px 2px 14px 1px rgba(00,00,00,0.2);
   background-color: #fff5f39d;
-  translate: all 1s;
+  transition: all 0.3s;
 }
 
 .tool-bar-item-container:hover {

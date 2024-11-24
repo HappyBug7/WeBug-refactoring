@@ -1,6 +1,7 @@
 <script setup>
 import Time from '@/components/Time.vue';
 import ToolBar from '@/components/ToolBar.vue';
+import search from '@/components/search.vue';
 const prop = defineProps(['bg_image']);
 const size = 50;
 const elements = [
@@ -31,6 +32,7 @@ const elements = [
   <div class="webug-container" :style="{backgroundImage: `url(${bg_image})`}">
     <Time :color='`#CDFBE4`'></Time>
     <tool-bar :components="elements" :size="size"></tool-bar>
+    <search></search>
   </div>
 </template>
 

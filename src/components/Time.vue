@@ -13,7 +13,8 @@ function getTime(){
   time.value = timeNow;
 }
 onMounted(() => {
-  setInterval(getTime, 1000);
+  getTime();
+  setInterval(getTime, 5000);
 })
 </script>
 
