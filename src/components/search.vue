@@ -1,10 +1,15 @@
 <script setup>
 import { ref } from 'vue';
+import axios from 'axios';
 const filterState = ref('none');
 const index = ref(10);
 const filter = ref('blur(5px)');
 const suggestState = ref(false);
 const q = ref('');
+const axios_instance = axios.create({
+  baseURL: '/api',
+  timeout: 3000
+})
 function blurFunction() {
   filterState.value = "none";
   index.value = 10;
@@ -16,18 +21,32 @@ function searchFnuction(){
   window.location.href="https://cn.bing.com/search?q=" + q.value;
 }
 function focusFunction(){
-  filterState.value="block"
-  index.value = 100
-  filter.value = "none"
-  // if(this.q != ""){
-  //   var url = "/api/search?q="+this.q
-  //   axios.get(url)
-  //   .then(res => {
-  //     s_data = res.data.data.Data
-  //   })
-  //   .catch(err => console.log(err))
-  // }
-  suggestState.value = true
+  filterState.value="block";
+  index.value = 100;
+  filter.value = "none";
+  if(q.value != ""){
+    var url = "/search?q="+q.value;
+    axios_instance.get(url)
+    .then(res => {
+      // s_data = res.data.data.Data;
+      console.log(res.data.data.Data);
+    })
+    .catch(err => console.log(err));
+  }
+  console.log(q.value);
+  suggestState.value = true;
+}
+function autoCompelete() {
+  if(q.value != ""){
+    var url = "/search?q="+q.value;
+    axios_instance.get(url)
+    .then(res => {
+      // s_data = res.data.data.Data;
+      console.log(res.data.data.Data);
+    })
+    .catch(err => console.log(err));
+  }
+  console.log(q.value);
 }
 </script>
 
@@ -39,7 +58,7 @@ function focusFunction(){
         <button class="search-button" @click="searchFnuction">
           <i class='bx bx-search' id="searchIcon"></i>
         </button>
-        <input type="text" class="search-main" @focus="focusFunction" v-model="q" :style="{zIndex:index}" @keyup.enter="searchFnuction" ref="SearchInput">
+        <input type="text" class="search-main" @focus="focusFunction" v-model="q" :style="{zIndex:index}" @keyup.enter="searchFnuction" ref="SearchInput" @input="autoCompelete">
       </div>
     </div>
   </div>  

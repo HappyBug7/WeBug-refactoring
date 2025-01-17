@@ -20,10 +20,10 @@ const elements = [
     icon_color: '#CDFBE4',
     use_switch: true,
     slot_width: 200,
-    component_state_1: Time,
-    component_state_2: Time,
-    component_props_1: {color: '#CDFBE4'},
-    component_props_2: {color: 'red'}
+    // component_state_1: Time,
+    // component_state_2: Time,
+    // component_props_1: {color: '#CDFBE4'},
+    // component_props_2: {color: 'red'}
   }
 ]
 </script>
