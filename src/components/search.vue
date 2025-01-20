@@ -2,51 +2,50 @@
 import { ref } from 'vue';
 import axios from 'axios';
 const filterState = ref('none');
-const index = ref(10);
 const filter = ref('blur(5px)');
-const suggestState = ref(false);
+const suggestState = ref('none');
+const index = ref(10);
 const q = ref('');
+const suggestion = ref('');
+const focus = ref(-1);
 const axios_instance = axios.create({
   baseURL: '/api',
   timeout: 3000
 })
 function blurFunction() {
   filterState.value = "none";
-  index.value = 10;
+  suggestState.value = "none";
   filter.value = "blur(5px)";
-  suggestState.value = false;
+  index.value = 10;
 }
 
 function searchFnuction(){
-  window.location.href="https://cn.bing.com/search?q=" + q.value;
+  if (focus == -1) {
+    window.location.href="https://cn.bing.com/search?q=" + q.value;
+  } else {
+    window.location.href="https://cn.bing.com/search?q=" + suggestion.value[focus.value];
+  }
 }
 function focusFunction(){
   filterState.value="block";
-  index.value = 100;
+  suggestState.value = "flex";
   filter.value = "none";
-  if(q.value != ""){
-    var url = "/search?q="+q.value;
-    axios_instance.get(url)
-    .then(res => {
-      // s_data = res.data.data.Data;
-      console.log(res.data.data.Data);
-    })
-    .catch(err => console.log(err));
-  }
-  console.log(q.value);
-  suggestState.value = true;
+  index.value = 100;
+  updateSuggestion();
 }
+
 function autoCompelete() {
-  if(q.value != ""){
-    var url = "/search?q="+q.value;
-    axios_instance.get(url)
-    .then(res => {
-      // s_data = res.data.data.Data;
-      console.log(res.data.data.Data);
-    })
-    .catch(err => console.log(err));
-  }
-  console.log(q.value);
+  updateSuggestion();
+}
+
+function updateSuggestion() {
+  var url = "/search?q="+q.value;
+  axios_instance.get(url)
+  .then(res => {
+    suggestion.value = res.data.data.Data;
+    focus.value = -1;
+  })
+  .catch(err => console.log(err));
 }
 </script>
 
@@ -58,7 +57,12 @@ function autoCompelete() {
         <button class="search-button" @click="searchFnuction">
           <i class='bx bx-search' id="searchIcon"></i>
         </button>
-        <input type="text" class="search-main" @focus="focusFunction" v-model="q" :style="{zIndex:index}" @keyup.enter="searchFnuction" ref="SearchInput" @input="autoCompelete">
+        <input type="text" class="search-main" @focus="focusFunction" v-model="q" :style="{zIndex:index}" @keyup.enter="searchFnuction" ref="SearchInput" @input="autoCompelete"  @keydown.up="focus == -1 ? focus = focus :focus--" @keydown.down="focus++">
+      </div>
+      <div class="suggestion-container" :style="{display:suggestState, zIndex:index}">
+        <div class="suggestion-item" v-for="(item, index) in suggestion" :key="item" :style="{color: index === focus ? 'red' : 'black'}" @mouseover="focus = index" @mouseleave="focus = -1">
+          {{item}}
+        </div>
       </div>
     </div>
   </div>  
@@ -98,6 +102,7 @@ function autoCompelete() {
   background-color: transparent;
   border: 1px solid white;
   display: flex;
+  flex-direction: column;
   align-items: center;
   flex-direction: row-reverse;
   transition: 0.5s;
@@ -120,5 +125,27 @@ function autoCompelete() {
   background-color: transparent;
   border-style: none;
   outline: none;
+}
+
+.suggestion-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  width: 400px;
+  border-radius: 10px;
+}
+
+.suggestion-item {
+  width: 400px;
+  height: 30px;
+  background-color: transparent;
+}
+
+.suggestion-item:hover {
+  transform: scale(1.1) translateX(20px);
+  transition: all 0.15s;
+  cursor: pointer;
 }
 </style>
