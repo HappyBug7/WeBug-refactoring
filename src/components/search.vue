@@ -1,17 +1,22 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
+
+const prop = defineProps(['search_color', 'search_foucs_bg_color']);
+
 const filterState = ref('none');
 const filter = ref('blur(5px)');
 const suggestState = ref('none');
 const index = ref(10);
 const q = ref('');
+const last = ref('undefined');
 const suggestion = ref('');
 const focus = ref(-1);
 const axios_instance = axios.create({
   baseURL: '/api',
   timeout: 3000
 })
+
 function blurFunction() {
   filterState.value = "none";
   suggestState.value = "none";
@@ -20,7 +25,7 @@ function blurFunction() {
 }
 
 function searchFnuction(){
-  if (focus == -1) {
+  if (focus.value == -1) {
     window.location.href="https://cn.bing.com/search?q=" + q.value;
   } else {
     window.location.href="https://cn.bing.com/search?q=" + suggestion.value[focus.value];
@@ -39,13 +44,16 @@ function autoCompelete() {
 }
 
 function updateSuggestion() {
-  var url = "/search?q="+q.value;
-  axios_instance.get(url)
-  .then(res => {
-    suggestion.value = res.data.data.Data;
-    focus.value = -1;
-  })
-  .catch(err => console.log(err));
+  if (q.value != last.value) {
+    var url = "/search?q="+q.value;
+    axios_instance.get(url)
+    .then(res => {
+      suggestion.value = res.data.data.Data;
+      focus.value = -1;
+    })
+    .catch(err => console.log(err));
+    last.value = q.value;
+  }
 }
 </script>
 
@@ -57,11 +65,16 @@ function updateSuggestion() {
         <button class="search-button" @click="searchFnuction">
           <i class='bx bx-search' id="searchIcon"></i>
         </button>
-        <input type="text" class="search-main" @focus="focusFunction" v-model="q" :style="{zIndex:index}" @keyup.enter="searchFnuction" ref="SearchInput" @input="autoCompelete"  @keydown.up="focus == -1 ? focus = focus :focus--" @keydown.down="focus++">
+        <input type="text" class="search-main" @focus="focusFunction" v-model="q" :style="{zIndex:index}" @keyup.enter="searchFnuction" ref="SearchInput" @input="autoCompelete"  @keydown.up="focus == -1 ? focus = focus :focus--" @keydown.down="focus == suggestion.length-1 ? focus = focus : focus++">
       </div>
       <div class="suggestion-container" :style="{display:suggestState, zIndex:index}">
-        <div class="suggestion-item" v-for="(item, index) in suggestion" :key="item" :style="{color: index === focus ? 'red' : 'black'}" @mouseover="focus = index" @mouseleave="focus = -1">
-          {{item}}
+        <div class="suggestion-item" v-for="(item, index) in suggestion" :key="item" :style="{backgroundColor: index === focus ? prop.search_foucs_bg_color : 'transparent', color : prop.search_color}" @mouseover="focus = index" @mouseleave="focus = -1" @click="searchFnuction">
+          <div v-if="q == item.substring(0, q.length)">
+            {{ q }}<b class="suggest-b">{{item.substring(q.length)}}</b>
+          </div>
+          <div v-if="q != item.substring(0, q.length)">
+            {{ item }}
+          </div>
         </div>
       </div>
     </div>
@@ -135,17 +148,21 @@ function updateSuggestion() {
   backdrop-filter: blur(10px);
   width: 400px;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 .suggestion-item {
   width: 400px;
   height: 30px;
   background-color: transparent;
+  padding-left: 6px;
 }
 
 .suggestion-item:hover {
-  transform: scale(1.1) translateX(20px);
-  transition: all 0.15s;
   cursor: pointer;
+}
+
+.suggest-b {
+  font-weight: bold;
 }
 </style>

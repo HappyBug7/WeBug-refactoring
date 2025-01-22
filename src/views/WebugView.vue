@@ -30,9 +30,9 @@ const elements = [
 
 <template>
   <div class="webug-container" :style="{backgroundImage: `url(${bg_image})`}">
-    <Time :color='`#CDFBE4`'></Time>
+    <Time class="webug-time" :color='`#CDFBE4`'></Time>
     <tool-bar :components="elements" :size="size"></tool-bar>
-    <search></search>
+    <search class="webug-search" :search_color='`#c4f3c4`' :search_foucs_bg_color="`#86ffc264`"></search>
   </div>
 </template>
 
@@ -45,5 +45,15 @@ const elements = [
   width: 100vw;
   height: 100vh;
   background-size: 100vw 100vh;
+}
+
+.webug-time {
+  position: absolute;
+  top: 20%
+}
+
+.webug-search {
+  position: absolute;
+  top: 30%;
 }
 </style>
