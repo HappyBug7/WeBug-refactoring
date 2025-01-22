@@ -63,7 +63,7 @@ function updateSuggestion() {
     <div class="search-area" :style="{zIndex:index}">
       <div class="search-box" :style="{zIndex:index,backdropFilter:filter}">
         <button class="search-button" @click="searchFnuction">
-          <i class='bx bx-search' id="searchIcon"></i>
+          <i class='bx bx-search search-icon'></i>
         </button>
         <input type="text" class="search-main" @focus="focusFunction" v-model="q" :style="{zIndex:index}" @keyup.enter="searchFnuction" ref="SearchInput" @input="autoCompelete"  @keydown.up="focus == -1 ? focus = focus :focus--" @keydown.down="focus == suggestion.length-1 ? focus = focus : focus++">
       </div>
@@ -82,6 +82,7 @@ function updateSuggestion() {
 </template>
 
 <style scoped>
+
 .search-container {
   position: relative;
   margin: 20px;
@@ -125,11 +126,18 @@ function updateSuggestion() {
   border-style: none;
   background-color: transparent;
   font-size: 20px;
+  line-height: 20px;
   text-align: center;
   width: 30px;
   height: 30px;
   border-radius: 50%;
   margin: 10px;
+  color: white;
+}
+
+.search-button:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .search-main {

@@ -1,7 +1,8 @@
 <script setup>
 import Time from '@/components/Time.vue';
 import ToolBar from '@/components/ToolBar.vue';
-import search from '@/components/search.vue';
+import Search from '@/components/Search.vue';
+import ShortCutItem from '@/components/ShortCutItem.vue';
 const prop = defineProps(['bg_image']);
 const size = 50;
 const elements = [
@@ -32,7 +33,8 @@ const elements = [
   <div class="webug-container" :style="{backgroundImage: `url(${bg_image})`}">
     <Time class="webug-time" :color='`#CDFBE4`'></Time>
     <tool-bar :components="elements" :size="size"></tool-bar>
-    <search class="webug-search" :search_color='`#c4f3c4`' :search_foucs_bg_color="`#86ffc264`"></search>
+    <Search class="webug-search" :search_color='`#c4f3c4`' :search_foucs_bg_color="`#86ffc264`"></Search>
+    <ShortCutItem :item_name="`im testing!!!`" :img_url="`/bg_bench.jpg`" :max_len="10" :font_color="`#CDFBE4`"></ShortCutItem>
   </div>
 </template>
 

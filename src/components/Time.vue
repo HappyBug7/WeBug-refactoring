@@ -19,16 +19,20 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="time" :style="{color: prop.color}">
-    <div id="container">
-      <div id="timeDisplay">{{ time }}</div>
+  <div class="time" :style="{color: prop.color}">
+    <div class="container">
+      <div class="time-display">{{ time }}</div>
       <!-- <weather id="weather"></weather> -->
     </div>
   </div>
 </template>
 
 <style scoped>
-#time{
+* {
+  font-family: 'comic sans ms';
+}
+
+.time{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,17 +41,17 @@ onMounted(() => {
   color: #CDFBE4;
 }
 
-#timeDisplay{
+.time-display{
   user-select: none;
   font-size: 40px;
   transition: all 0.35s;
 }
 
-#timeDisplay:hover{
+.time-display:hover{
   transform: scale(1.2);
 }
 
-#container{
+.container{
   display: flex;
   flex-direction: column;
   margin: auto;
