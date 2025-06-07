@@ -10,12 +10,11 @@
   - **Type:** component[]
   - **Default:** 0
 - `size`
-
   - **Description:** the size of the icon
   - **Type:** number
   - **Default:** 0
 
-`conponent`:
+`component`:
 
 ```
 icon: string,

@@ -1,5 +1,5 @@
 <script setup>
-  const prop = defineProps(['item_name', 'img_url', 'max_len', 'font_color']);
+  const prop = defineProps(['item_name', 'img_url', 'max_len', 'font_color', 'dest']);
   const name = nameDisplay();
   
   function nameDisplay() {
@@ -19,21 +19,36 @@
 
 
 <template>
-  <div class="container" :style="{color: prop.font_color}">
-    <div class="short-cut-item">
-      <img :src="img_url" class="imgs"/>
-      <span>{{ name }}</span>
+  <a :href="prop.dest" :title="prop.item_name" class="short-cut">
+    <div class="container">
+      <div class="short-cut-item">
+        <img :src="img_url" class="imgs"/>
+      </div>
     </div>
-  </div>
+    <span class="short-cut-name" :style="{color: prop.font_color}">{{ name }}</span>
+  </a>
 </template>
 
 
 <style scoped>
+.short-cut {
+  text-decoration: none;
+  transition: all 0.2s;
+  margin: 0;
+  width: 90px;
+  height: 90px;
+}
+
 .container {
+  width: 50px;
+  height: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 0 14px 1px rgba(00,00,00,0.2);
+  background-color: #cdfbe4a5;
+  border-radius: 10px;
 }
 
 .short-cut-item {
@@ -41,12 +56,26 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 10px;
+  transition: all 0.2s;
+}
+
+.short-cut-item:hover {
+  transform: scale(1.2);
+  width: 99px;
+}
+
+.short-cut-item:hover > div {
+  box-shadow: none;
+  transition: all 0.5s;
 }
 
 .imgs {
-  width: 50px;
-  height: 50px;
+  width: 20px;
+  height: 20px;
   border-radius: 10px;
+}
+
+.short-cut-name {
+  font-size: 13px;
 }
 </style>
