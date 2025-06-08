@@ -1,21 +1,16 @@
 # Tool Bar
-
 *component documentation*
-
 ## API
 ### Props
-
 - `components`
   - **Description:** the total amount of components to be rendered
   - **Type:** component[]
-  - **Default:** 0
+  - **Default:** []
 - `size`
   - **Description:** the size of the icon
   - **Type:** number
   - **Default:** 0
-
 `component`:
-
 ```
 icon: string,
 icon_color: string,
@@ -26,25 +21,17 @@ component_state_2: Component,
 component_props_1: {options},
 component_props_2: {options}
 ```
-
 ### Slots
-
 - `slot-index-1`
   - **Description:** the origin state of the component
 - `slot-index-2` (if need switch bar)
   - **Description:** another state of the component
 
-
-
 ## Usage
-
 ### Common usage
-
 the preferred usage is:
-
 - first create a component list as below:
-
-```
+```js
 const elements = [
   {
     icon: 'bx bx-x',
@@ -68,19 +55,12 @@ const elements = [
   }
 ]
 ```
-
 - then use the component to render a tool bar
-
 `<tool-bar :components="elements" :size="size"></tool-bar>`
-
-
 
 ### Example usage
-
 `<tool-bar :components="elements" :size="size"></tool-bar>`
-
 then we got
-
 ![image-20241124011705453](./assets/Tool-bar-example-usage.png)
 
 

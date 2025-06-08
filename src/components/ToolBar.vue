@@ -7,12 +7,13 @@ const prop = defineProps(['size', 'components']);
   <div class="tool-bar-container">
     <tool-bar-items v-for="(item, index) in prop.components"
       :key="index" 
-      :size="prop.size" 
+      :size="prop.size"
       :posx="20" 
       :posy="20+index*(size+20)" 
       :icon="item.icon" 
       :use_switch="item.use_switch" 
-      :width="item.slot_width">
+      :width_1="item.slot_width_1"
+      :width_2="item.slot_width_2">
       <template v-slot:slot-1>
         <slot :class="`slot-{{index}}-1`">
           <component :is="item.component_state_1" v-bind="item.component_props_1"></component>

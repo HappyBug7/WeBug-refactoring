@@ -2,7 +2,7 @@
 import VueDraggableResizable from 'vue-draggable-resizable';
 import {ref} from 'vue';
 import 'boxicons';
-const prop = defineProps(['icon', 'icon_color', 'size', 'posx', 'posy', 'use_switch', 'width', 'height']);
+const prop = defineProps(['icon', 'icon_color', 'size', 'posx', 'posy', 'use_switch', 'width_1', 'width_2', 'height']);
 const isOpen = ref(false);
 const filterDisplay = ref('none');
 const view = ref(true);
@@ -16,8 +16,8 @@ const view = ref(true);
     </div>
   </div>
   <div class="draggable-container" v-show="isOpen">
-    <vue-draggable-resizable :parent="false" :w="prop.width+'px'">
-      <div class="slot-container" :style="{width: prop.width+'px'}">
+    <vue-draggable-resizable :parent="false" :w="view ? prop.width_1 +'px' : prop.width_2 +'px'">
+      <div class="slot-container" :style="{width: view ? prop.width_1 +'px': prop.width_2 +'px'}">
         <div class="control-buttons">
           <div class="close-button">
             <i class='bx bx-x' @click="() => {isOpen = !isOpen}"></i>

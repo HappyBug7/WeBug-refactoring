@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, Transition } from 'vue';
 import axios from 'axios';
 
 const prop = defineProps(['search_color', 'search_foucs_bg_color']);
@@ -12,6 +12,7 @@ const q = ref('');
 const last = ref('undefined');
 const suggestion = ref('');
 const focus = ref(-1);
+const isMouseOver = ref(false);
 const axios_instance = axios.create({
   baseURL: '/api',
   timeout: 3000
@@ -61,7 +62,7 @@ function updateSuggestion() {
   <div class="search-container">
     <div class="back-blur" :style="{display:filterState}" @click="blurFunction"></div>
     <div class="search-area" :style="{zIndex:index}">
-      <div class="search-box" :style="{zIndex:index,backdropFilter:filter}">
+      <div class="search-box" :style="{zIndex:index, backdropFilter:filter, transform: (isMouseOver || filterState != 'none') ? 'scale(1)' : 'scale(0.95)'}" @mouseover="isMouseOver = true" @mouseleave="isMouseOver = false">
         <button class="search-button" @click="searchFnuction">
           <i class='bx bx-search search-icon'></i>
         </button>
