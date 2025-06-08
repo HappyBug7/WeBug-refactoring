@@ -108,7 +108,6 @@ const view = ref(true);
   align-items: center;
   justify-content: center;
   width: 400px;
-  z-index: 1;
 }
 
 .control-buttons {

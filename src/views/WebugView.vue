@@ -45,7 +45,7 @@ const elements = computed(() => [
     icon_color: '#CDFBE4',
     use_switch: true,
     slot_width_1: 300,
-    slot_width_2: 1000,
+    slot_width_2: 400,
     component_state_1: AddShortCut,
     component_state_2: UpdateShortCut,
     component_props_1: {},

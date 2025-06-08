@@ -7,7 +7,7 @@ const prop = defineProps(['search_color', 'search_foucs_bg_color']);
 const filterState = ref('none');
 const filter = ref('blur(5px)');
 const suggestState = ref('none');
-const index = ref(10);
+const index = ref(1);
 const q = ref('');
 const last = ref('undefined');
 const suggestion = ref('');
@@ -22,7 +22,7 @@ function blurFunction() {
   filterState.value = "none";
   suggestState.value = "none";
   filter.value = "blur(5px)";
-  index.value = 10;
+  index.value = 1;
 }
 
 function searchFnuction(){

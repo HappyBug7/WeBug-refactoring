@@ -28,37 +28,37 @@ function submitFunc() {
 </template>
 
 <style scoped>
-  .input-div{
-    width: 300px;
-    height: 180px;
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-  }
+.input-div{
+  width: 300px;
+  height: 180px;
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
 
-  .input-basic {
-    margin: 5px;
-    border-radius: 5px;
-    border-style: none;
-    height: 60px;
-    padding: 5px;    
-    background-color: #ffeba5be;
-  }
+.input-basic {
+  margin: 5px;
+  border-radius: 5px;
+  border-style: none;
+  height: 60px;
+  padding: 5px;    
+  background-color: #ffeba5be;
+}
 
-  .submit-button{
-    margin: 5px;
-    border-radius: 5px;
-    border-style: none;
-    height: 60px;
-    padding: 5px;
-    background-color: #ffd334be;
-    color: #CDFBE4;
-    box-shadow: 0 0 14px 1px rgba(00,00,00,0.2);
-  }
+.submit-button{
+  margin: 5px;
+  border-radius: 5px;
+  border-style: none;
+  height: 60px;
+  padding: 5px;
+  background-color: #ffd334be;
+  color: #CDFBE4;
+  box-shadow: 0 0 14px 1px rgba(00,00,00,0.2);
+}
 
-  .submit-button:hover{
-    color: #2f61ea;
-    cursor: pointer;
-  }
+.submit-button:hover{
+  color: #2f61ea;
+  cursor: pointer;
+}
 </style>
