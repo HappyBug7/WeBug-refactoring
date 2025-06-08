@@ -9,10 +9,10 @@ const view = ref(true);
 </script>
 
 <template>
-  <div class="tool-bar-item-container" :style="{width: size+'px', height: size+'px', top: posy+'px', left: posx+'px', color: icon_color}">
-    <i :class=prop.icon id="icon"  @click="() => {isOpen = !isOpen}" @mouseover="() => {if (isOpen) filterDisplay = 'block'}" :style="{width: size+'px', height: size+'px', fontSize: size+'px', color: icon_color}"></i>
-    <div id="filter" :style="{display: filterDisplay, width: size+'px', height: size+'px'}" @mouseleave="() => {filterDisplay = 'none'}" @click="() => {isOpen = !isOpen}">
-      <i class='bx bx-x' id="X" :style="{fontSize: size+'px'}"></i>
+  <div class="tool-bar-item-container" :style="{width: prop.size+'px', height: prop.size+'px', top: prop.posy+'px', left: prop.posx+'px', color: prop.icon_color}">
+    <i :class=prop.icon id="icon"  @click="() => {isOpen = !isOpen}" @mouseover="() => {if (isOpen) filterDisplay = 'block'}" :style="{width: (prop.size-10)+'px', height: (prop.size-10)+'px', fontSize: (prop.size-10)+'px', color: prop.icon_color}"></i>
+    <div id="filter" :style="{display: filterDisplay, width: prop.size+'px', height: prop.size+'px'}" @mouseleave="() => {filterDisplay = 'none'}" @click="() => {isOpen = !isOpen}">
+      <i class='bx bx-x' id="X" :style="{fontSize: prop.size+'px'}"></i>
     </div>
   </div>
   <div class="draggable-container" v-show="isOpen">
@@ -52,6 +52,7 @@ const view = ref(true);
 * {
   user-select: none;
   font-family: 'comic sans ms';
+  z-index: 10;
 }
 
 /* icon style */
@@ -66,6 +67,7 @@ const view = ref(true);
   box-shadow: 2px 2px 14px 1px rgba(00,00,00,0.2);
   background-color: #fff5f39d;
   transition: all 0.3s;
+  z-index: 1;
 }
 
 .tool-bar-item-container:hover {

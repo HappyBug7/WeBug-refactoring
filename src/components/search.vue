@@ -108,6 +108,7 @@ function updateSuggestion() {
   align-items: center;
   flex-direction: column;
   background-repeat: no-repeat;
+  position: relative;
 }
 
 .search-box {
