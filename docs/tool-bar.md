@@ -1,5 +1,7 @@
 # Tool Bar
 *component documentation*
+## Overview
+A tool bar, which takes a list of components and display them in order, as for components, each component can have two states, controlled by a switch bar. 
 ## API
 ### Props
 - `components`

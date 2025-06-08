@@ -1,7 +1,7 @@
 # Web Short Cut
-
 *component documentation*
-
+## Overview
+Takes a list of shortcuts and then display them in order
 ## API
 ### Props
 - `items`

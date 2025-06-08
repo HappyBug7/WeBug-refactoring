@@ -13,6 +13,34 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "web-short-cut.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "web-short-cut"
+            }
+          },
+          {
+            "id": "d0fa2ad9773101f5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "add-short-cut.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "add-short-cut"
+            }
+          },
+          {
+            "id": "93373e44b7929116",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "tool-bar.md",
                 "mode": "source",
                 "source": false
@@ -20,8 +48,51 @@
               "icon": "lucide-file",
               "title": "tool-bar"
             }
+          },
+          {
+            "id": "01275aebbe71a8f4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "search.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "search"
+            }
+          },
+          {
+            "id": "093a662b21603d0c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "schedule.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "schedule"
+            }
+          },
+          {
+            "id": "2f2e8a6b0a4f3a90",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
           }
-        ]
+        ],
+        "currentTab": 5
       },
       {
         "id": "0b67af921fe43e88",
@@ -33,12 +104,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "web-short-cut.md",
+                "file": "time.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "web-short-cut"
+              "title": "time"
             }
           }
         ]
@@ -98,8 +169,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "81dd688b881b1e7f",
@@ -189,11 +259,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "96c91f8b0dae923e",
+  "active": "2f2e8a6b0a4f3a90",
   "lastOpenFiles": [
-    "Pasted image 20250607235839.png",
+    "time.md",
+    "Pasted image 20250608210645.png",
+    "README.md",
+    "assets/Pasted image 20250608210648.png",
+    "schedule.md",
+    "search.md",
     "tool-bar.md",
+    "update-short-cut.md",
+    "add-short-cut.md",
     "web-short-cut.md",
-    "time.md"
+    "assets/Pasted image 20250607235839.png"
   ]
 }
